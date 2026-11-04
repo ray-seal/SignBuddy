@@ -417,3 +417,84 @@ h2 {
     flex-direction: column;
   }
 }
+
+
+/* ARASAAC picture symbol search */
+.symbol-promo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+.symbol-promo p:last-child {
+  max-width: 58ch;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.symbol-promo-link { flex-shrink: 0; }
+.symbol-search { margin-top: 2rem; }
+.symbol-search-intro { max-width: 60ch; }
+.symbol-search-intro > p:last-child { color: var(--muted); }
+.symbol-results { min-height: 3rem; margin-top: 2rem; }
+.symbol-message { color: var(--muted); }
+.symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.symbol-card {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+.symbol-image-wrap {
+  display: flex;
+  min-height: 12rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #fff;
+}
+.symbol-image-wrap img {
+  display: block;
+  width: 100%;
+  max-width: 13rem;
+  height: 12rem;
+  object-fit: contain;
+}
+.symbol-card-content {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+.symbol-card-content h4 {
+  margin: 0 0 0.35rem;
+  color: var(--brand-dark);
+  font-size: 1.1rem;
+  text-transform: capitalize;
+}
+.symbol-card-content p {
+  margin-bottom: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.symbol-attribution {
+  margin-top: 2rem;
+  padding: 1rem;
+  color: var(--muted);
+  background: #eaf1ef;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+}
+@media (max-width: 36rem) {
+  .symbol-promo {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -7,7 +7,6 @@ export type TranslationResult =
   | { kind: "empty" }
   | { kind: "phrase"; signs: Sign[] }
   | { kind: "individual"; signs: Sign[] }
-  | { kind: "partial"; signs: Sign[]; unmatchedWords: string[] }
   | { kind: "unsupported"; suggestions: Sign[] };
 
 for (const mapping of approvedPhrases) {
@@ -33,27 +32,15 @@ export function translateText(input: string): TranslationResult {
     };
   }
 
-  const individualSigns = signs.filter((sign) => normalizeText(sign.word) === query);
+  const individualSigns = signs.filter(
+    (sign) => normalizeText(sign.word) === query,
+  );
   if (individualSigns.length > 0) {
     return { kind: "individual", signs: individualSigns };
   }
 
-  const words = query.split(" ");
-  const matchedSigns = words.flatMap((word) =>
-    signs.filter((sign) => normalizeText(sign.word) === word),
-  );
-  const uniqueSigns = matchedSigns.filter(
-    (sign, index) => matchedSigns.findIndex((match) => match.id === sign.id) === index,
-  );
-
-  if (uniqueSigns.length > 0) {
-    const matchedWords = new Set(uniqueSigns.map((sign) => normalizeText(sign.word)));
-    return {
-      kind: "partial",
-      signs: uniqueSigns,
-      unmatchedWords: words.filter((word) => !matchedWords.has(word)),
-    };
-  }
-
+  // Never turn an English sentence into a sequence of unrelated word signs.
+  // BSL has its own grammar, so only reviewed phrase mappings can be shown
+  // as a phrase. Related dictionary entries are suggestions, not a translation.
   return { kind: "unsupported", suggestions: searchSigns(query).slice(0, 3) };
 }
