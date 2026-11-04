@@ -7,7 +7,7 @@ export default function AppNavigation() {
         SignBuddy
       </Link>
       <nav aria-label="Main navigation">
-        <Link href="/">Translate</Link>
+        <Link href="/">Say something</Link>
         <Link href="/dictionary">BSL Dictionary</Link>
       </nav>
     </header>
