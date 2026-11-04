@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import AppNavigation from "@/components/AppNavigation";
 import SearchInput from "@/components/SearchInput";
 import SignCard from "@/components/SignCard";
 import { translateText } from "@/lib/translate";
 
 export const metadata: Metadata = {
-  title: "Show signs",
+  title: "Find signs",
 };
 
 type TranslatePageProps = {
@@ -22,77 +23,74 @@ export default async function TranslatePage({
     <>
       <AppNavigation />
       <main className="page-content">
-        <p className="eyebrow">Local phrase matching</p>
-        <h1>Show signs</h1>
+        <p className="eyebrow">Communication support</p>
+        <h1>Find signs</h1>
+        <p className="lead">
+          Enter the message you want to communicate. SignBuddy checks for an
+          exact, reviewed phrase or an individual dictionary entry.
+        </p>
         <SearchInput
           action="/translate"
-          buttonText="Show signs"
+          buttonText="Find signs"
           id="translate-query"
-          label="Enter an English word or phrase"
-          placeholder="For example, hello"
+          label="What would you like to say?"
+          placeholder="Type a word or phrase"
           value={q}
         />
 
         <section className="translation-result" aria-live="polite">
           {result.kind === "empty" && (
             <div className="empty-state">
-              <h2>What would you like to look up?</h2>
-              <p>Enter an English word or phrase to begin.</p>
+              <h2>What would you like to communicate?</h2>
+              <p>
+                Enter a word or phrase. You can also browse the dictionary to
+                look up a sign you have seen someone use.
+              </p>
             </div>
           )}
 
           {result.kind === "phrase" && (
             <>
-              <h2>Approved phrase match</h2>
-              <p>This phrase has a locally approved sign sequence.</p>
+              <h2>Reviewed phrase match</h2>
+              <p>
+                This phrase has a reviewed BSL sign sequence. Follow the signs
+                in the order shown.
+              </p>
               <SignList signs={result.signs} />
             </>
           )}
 
           {result.kind === "individual" && (
             <>
-              <h2>Individual dictionary match</h2>
+              <h2>Individual sign entry</h2>
               <p>
-                This is an individual entry, not a translation of a phrase.
-                Its sign content is still marked with its verification status.
+                This is an entry for one word, not a translation of a sentence.
+                Check its review status before relying on it.
               </p>
-              <SignList signs={result.signs} />
-            </>
-          )}
-
-          {result.kind === "partial" && (
-            <>
-              <h2>No approved phrase sequence found</h2>
-              <p>
-                These are individual word matches only; they are not a complete
-                BSL translation and should not be combined as a sentence.
-              </p>
-              {result.unmatchedWords.length > 0 && (
-                <p>
-                  No individual entries were found for:{" "}
-                  <strong>{result.unmatchedWords.join(", ")}</strong>.
-                </p>
-              )}
               <SignList signs={result.signs} />
             </>
           )}
 
           {result.kind === "unsupported" && (
-            <>
-              <h2>No approved match found</h2>
+            <div className="empty-state">
+              <h2>No reviewed match available yet</h2>
               <p>
-                SignBuddy does not translate unsupported phrases word by word.
-                You can explore related dictionary entries below.
+                SignBuddy does not guess, translate word by word or present
+                unrelated signs as a sentence. Try a shorter expression, or
+                browse the dictionary for individual entries.
               </p>
-              {result.suggestions.length > 0 ? (
-                <SignList signs={result.suggestions} />
-              ) : (
-                <p>
-                  No related entries were found. Try a different search or
-                  browse the <a href="/dictionary">complete dictionary</a>.
-                </p>
+              {result.suggestions.length > 0 && (
+                <>
+                  <h3>Related dictionary entries</h3>
+                  <SignList signs={result.suggestions} />
+                </>
               )}
-            </>
+              <p>
+                <Link className="text-link" href="/dictionary">
+                  Browse the BSL dictionary
+                </Link>
+              </p>
+            </div>
           )}
         </section>
       </main>
