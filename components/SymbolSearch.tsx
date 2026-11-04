@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 
 type SymbolResult = {
   id: number;
@@ -133,6 +134,10 @@ export default function SymbolSearch() {
         Creative Commons BY-NC-SA 4.0 licence.{" "}
         <a href="https://arasaac.org/" target="_blank" rel="noreferrer">
           ARASAAC
+        </a>
+        {" · "}
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">
+          Licence details
         </a>
         .
       </p>
