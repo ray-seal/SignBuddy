@@ -10,30 +10,31 @@ export default function Home() {
       <AppNavigation />
       <main className="page-content home-content">
         <section className="hero">
-          <p className="eyebrow">A friendly BSL learning companion</p>
-          <h1>Find signs. Build understanding.</h1>
+          <p className="eyebrow">Everyday communication support</p>
+          <h1>Find a way to say it.</h1>
           <p className="lead">
-            Explore British Sign Language entries or check whether a phrase has
-            an approved sign sequence.
+            Type what you want to communicate. SignBuddy will look for a
+            reviewed British Sign Language phrase or sign and show you what is
+            available.
           </p>
           <SearchInput
             action="/translate"
-            buttonText="Show signs"
+            buttonText="Find signs"
             id="translate-query"
-            label="Enter an English word or phrase"
-            placeholder="For example, hello"
+            label="What would you like to say?"
+            placeholder="For example, hello or thank you"
           />
           <p className="content-notice">
-            Sign entries are development placeholders until checked by a
-            competent BSL signer.
+            SignBuddy is an assistive communication aid, not a BSL teaching
+            course. It only presents sign content that has been reviewed.
           </p>
         </section>
 
         <section className="home-section" aria-labelledby="dictionary-heading">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Explore by topic</p>
-              <h2 id="dictionary-heading">Browse the dictionary</h2>
+              <p className="eyebrow">Understand a sign</p>
+              <h2 id="dictionary-heading">Browse the BSL dictionary</h2>
             </div>
             <Link className="text-link" href="/dictionary">
               View all entries
@@ -54,9 +55,9 @@ export default function Home() {
           </ul>
         </section>
 
-        <section className="home-section" aria-labelledby="suggestions-heading">
-          <p className="eyebrow">Start exploring</p>
-          <h2 id="suggestions-heading">Individual dictionary entries</h2>
+        <section className="home-section" aria-labelledby="available-heading">
+          <p className="eyebrow">Explore what is in the library</p>
+          <h2 id="available-heading">Available entries</h2>
           <ul className="suggestion-list">
             {signs.slice(0, 4).map((sign) => (
               <li key={sign.id}>
@@ -66,11 +67,15 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <p className="content-notice">
+            The starter entries are placeholders. They are not signing
+            instructions and must not be treated as verified BSL.
+          </p>
         </section>
       </main>
       <footer className="site-footer">
-        SignBuddy is a learning aid, not a substitute for learning BSL from
-        qualified people.
+        SignBuddy supports communication. It does not replace the knowledge,
+        choices or preferred communication methods of a BSL user.
       </footer>
     </>
   );
