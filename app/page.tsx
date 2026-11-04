@@ -30,23 +30,33 @@ export default function Home() {
           </p>
         </section>
 
+        <section className="home-section symbol-promo" aria-labelledby="symbols-heading">
+          <div>
+            <p className="eyebrow">A picture can help</p>
+            <h2 id="symbols-heading">Find a picture symbol</h2>
+            <p>
+              Search visual symbols for everyday needs, objects and feelings.
+              They are not BSL signs, but can offer another way to get an idea
+              across.
+            </p>
+          </div>
+          <Link className="button button-primary symbol-promo-link" href="/symbols">
+            Explore picture symbols
+          </Link>
+        </section>
+
         <section className="home-section" aria-labelledby="dictionary-heading">
           <div className="section-heading">
             <div>
               <p className="eyebrow">Understand a sign</p>
               <h2 id="dictionary-heading">Browse the BSL dictionary</h2>
             </div>
-            <Link className="text-link" href="/dictionary">
-              View all entries
-            </Link>
+            <Link className="text-link" href="/dictionary">View all entries</Link>
           </div>
           <ul className="category-grid">
             {categories.map((category) => (
               <li key={category.id}>
-                <Link
-                  className="category-card"
-                  href={`/dictionary?category=${category.id}`}
-                >
+                <Link className="category-card" href={"/dictionary?category=" + category.id}>
                   <strong>{category.name}</strong>
                   <span>{category.description}</span>
                 </Link>
@@ -61,7 +71,7 @@ export default function Home() {
           <ul className="suggestion-list">
             {signs.slice(0, 4).map((sign) => (
               <li key={sign.id}>
-                <Link href={`/translate?q=${encodeURIComponent(sign.word)}`}>
+                <Link href={"/translate?q=" + encodeURIComponent(sign.word)}>
                   {sign.word}
                 </Link>
               </li>
