@@ -3,10 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "SignBuddy | BSL communication helper",
+    default: "SignBuddy | BSL communication support",
     template: "%s | SignBuddy",
   },
-  description: "Explore local British Sign Language sign entries and supported phrases.",
+  description:
+    "An assistive British Sign Language communication helper with a searchable sign dictionary.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
