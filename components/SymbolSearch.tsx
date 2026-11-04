@@ -131,13 +131,13 @@ export default function SymbolSearch() {
       <p className="symbol-attribution">
         Pictograms are the property of the Government of Aragón and were
         created by Sergio Palao for ARASAAC. Distributed under the
-        Creative Commons BY-NC-SA 4.0 licence.{" "}
+        Creative Commons BY-NC-SA licence.{" "}
         <a href="https://arasaac.org/" target="_blank" rel="noreferrer">
           ARASAAC
         </a>
         {" · "}
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">
-          Licence details
+        <a href="https://arasaac.org/terms-of-use" target="_blank" rel="noreferrer">
+          Terms of use
         </a>
         .
       </p>
