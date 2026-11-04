@@ -48,7 +48,7 @@ licence terms before any commercial use or redistribution.
 
 - ARASAAC: https://arasaac.org/
 - API documentation: https://beta.arasaac.org/developers/api
-- Licence: https://creativecommons.org/licenses/by-nc-sa/4.0/
+- Terms of use: https://arasaac.org/terms-of-use
 
 ## Current scope
 
